@@ -179,7 +179,7 @@
     <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_99485C68_3E12_4739_829E_BC4BBA56380D">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(449)</SequenceIdentity>
+      <SequenceIdentity>null(545)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <table id="165" parent="4" name="USER">
@@ -189,7 +189,7 @@
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(449)</SequenceIdentity>
+      <SequenceIdentity>null(545)</SequenceIdentity>
     </column>
     <column id="167" parent="165" name="ACCOUNT_ID">
       <Position>2</Position>
