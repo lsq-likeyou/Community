@@ -12,7 +12,7 @@
       <Current>1</Current>
     </schema>
     <user id="5" parent="2" name="LU">
-      <ObjectId>7</ObjectId>
+      <ObjectId>2</ObjectId>
       <Admin>1</Admin>
     </user>
     <role id="6" parent="2" name="PUBLIC">
@@ -176,10 +176,10 @@
     <collation id="161" parent="2" name="UKRAINIAN_UKRAINE"/>
     <collation id="162" parent="2" name="VIETNAMESE"/>
     <collation id="163" parent="2" name="VIETNAMESE_VIETNAM"/>
-    <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_99485C68_3E12_4739_829E_BC4BBA56380D">
+    <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_549F7BE0_3F9D_40EC_B140_0CE006B97BC7">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(545)</SequenceIdentity>
+      <SequenceIdentity>null(65)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <table id="165" parent="4" name="USER">
@@ -189,7 +189,7 @@
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(545)</SequenceIdentity>
+      <SequenceIdentity>null(65)</SequenceIdentity>
     </column>
     <column id="167" parent="165" name="ACCOUNT_ID">
       <Position>2</Position>
@@ -211,7 +211,7 @@
       <Position>6</Position>
       <DataType>BIGINT|0s</DataType>
     </column>
-    <index id="172" parent="165" name="PRIMARY_KEY_C">
+    <index id="172" parent="165" name="PRIMARY_KEY_2">
       <ObjectId>5</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>68</SourceTextLength>
@@ -219,7 +219,7 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="173" parent="165" name="TABLE_NAME_PK">
+    <key id="173" parent="165" name="USER_PK">
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
