@@ -179,17 +179,17 @@
     <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_549F7BE0_3F9D_40EC_B140_0CE006B97BC7">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(65)</SequenceIdentity>
+      <SequenceIdentity>null(193)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <table id="165" parent="4" name="USER">
-      <ObjectId>3</ObjectId>
+      <ObjectId>7</ObjectId>
     </table>
     <column id="166" parent="165" name="ID">
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(65)</SequenceIdentity>
+      <SequenceIdentity>null(193)</SequenceIdentity>
     </column>
     <column id="167" parent="165" name="ACCOUNT_ID">
       <Position>2</Position>
@@ -211,15 +211,19 @@
       <Position>6</Position>
       <DataType>BIGINT|0s</DataType>
     </column>
-    <index id="172" parent="165" name="PRIMARY_KEY_2">
-      <ObjectId>5</ObjectId>
+    <column id="172" parent="165" name="BIO">
+      <Position>7</Position>
+      <DataType>VARCHAR(256)|0s</DataType>
+    </column>
+    <index id="173" parent="165" name="PRIMARY_KEY_27">
+      <ObjectId>8</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SourceTextLength>68</SourceTextLength>
+      <SourceTextLength>69</SourceTextLength>
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="173" parent="165" name="USER_PK">
+    <key id="174" parent="165" name="USER_PK">
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
