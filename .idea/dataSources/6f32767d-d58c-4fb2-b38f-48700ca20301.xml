@@ -176,46 +176,112 @@
     <collation id="161" parent="2" name="UKRAINIAN_UKRAINE"/>
     <collation id="162" parent="2" name="VIETNAMESE"/>
     <collation id="163" parent="2" name="VIETNAMESE_VIETNAM"/>
-    <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_549F7BE0_3F9D_40EC_B140_0CE006B97BC7">
-      <ObjectId>4</ObjectId>
+    <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_1E052475_7179_476D_8E43_1C9246758637">
+      <ObjectId>5</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(193)</SequenceIdentity>
+      <SequenceIdentity>null(1)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
-    <table id="165" parent="4" name="USER">
+    <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_549F7BE0_3F9D_40EC_B140_0CE006B97BC7">
+      <ObjectId>4</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <SequenceIdentity>null(353)</SequenceIdentity>
+      <AutoCreated>1</AutoCreated>
+    </sequence>
+    <table id="166" parent="4" name="QUESTION">
+      <ObjectId>3</ObjectId>
+    </table>
+    <table id="167" parent="4" name="USER">
       <ObjectId>7</ObjectId>
     </table>
-    <column id="166" parent="165" name="ID">
+    <column id="168" parent="166" name="ID">
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(193)</SequenceIdentity>
+      <SequenceIdentity>null(1)</SequenceIdentity>
     </column>
-    <column id="167" parent="165" name="ACCOUNT_ID">
+    <column id="169" parent="166" name="TITLE">
       <Position>2</Position>
-      <DataType>VARCHAR(100)|0s</DataType>
-    </column>
-    <column id="168" parent="165" name="NAME">
-      <Position>3</Position>
       <DataType>VARCHAR(50)|0s</DataType>
     </column>
-    <column id="169" parent="165" name="TOKEN">
-      <Position>4</Position>
-      <DataType>CHAR(36)|0s</DataType>
+    <column id="170" parent="166" name="DESCRIPTION">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
     </column>
-    <column id="170" parent="165" name="GMT_CREATE">
+    <column id="171" parent="166" name="GMT_CREATE">
+      <Position>4</Position>
+      <DataType>BIGINT|0s</DataType>
+    </column>
+    <column id="172" parent="166" name="GMT_MODIFIED">
       <Position>5</Position>
       <DataType>BIGINT|0s</DataType>
     </column>
-    <column id="171" parent="165" name="GMT_MODIFIED">
+    <column id="173" parent="166" name="CREATOR">
+      <Position>6</Position>
+      <DataType>INT|0s</DataType>
+    </column>
+    <column id="174" parent="166" name="COMMENT_COUNT">
+      <Position>7</Position>
+      <DataType>INT|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="175" parent="166" name="VIEW_COUNT">
+      <Position>8</Position>
+      <DataType>INT|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="176" parent="166" name="LIKE_COUNT">
+      <Position>9</Position>
+      <DataType>INT|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="177" parent="166" name="TAG">
+      <Position>10</Position>
+      <DataType>VARCHAR(256)|0s</DataType>
+    </column>
+    <index id="178" parent="166" name="PRIMARY_KEY_E">
+      <ObjectId>6</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <SourceTextLength>72</SourceTextLength>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+      <AutoCreated>1</AutoCreated>
+    </index>
+    <key id="179" parent="166" name="QUESTION_PK">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="180" parent="167" name="ID">
+      <Position>1</Position>
+      <DataType>INT|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null(353)</SequenceIdentity>
+    </column>
+    <column id="181" parent="167" name="ACCOUNT_ID">
+      <Position>2</Position>
+      <DataType>VARCHAR(100)|0s</DataType>
+    </column>
+    <column id="182" parent="167" name="NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+    </column>
+    <column id="183" parent="167" name="TOKEN">
+      <Position>4</Position>
+      <DataType>CHAR(36)|0s</DataType>
+    </column>
+    <column id="184" parent="167" name="GMT_CREATE">
+      <Position>5</Position>
+      <DataType>BIGINT|0s</DataType>
+    </column>
+    <column id="185" parent="167" name="GMT_MODIFIED">
       <Position>6</Position>
       <DataType>BIGINT|0s</DataType>
     </column>
-    <column id="172" parent="165" name="BIO">
+    <column id="186" parent="167" name="BIO">
       <Position>7</Position>
       <DataType>VARCHAR(256)|0s</DataType>
     </column>
-    <index id="173" parent="165" name="PRIMARY_KEY_27">
+    <index id="187" parent="167" name="PRIMARY_KEY_27">
       <ObjectId>8</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>69</SourceTextLength>
@@ -223,7 +289,7 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="174" parent="165" name="USER_PK">
+    <key id="188" parent="167" name="USER_PK">
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
