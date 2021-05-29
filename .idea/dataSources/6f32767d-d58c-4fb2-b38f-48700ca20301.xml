@@ -179,26 +179,26 @@
     <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_1E052475_7179_476D_8E43_1C9246758637">
       <ObjectId>5</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(129)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_549F7BE0_3F9D_40EC_B140_0CE006B97BC7">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(353)</SequenceIdentity>
+      <SequenceIdentity>null(481)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <table id="166" parent="4" name="QUESTION">
       <ObjectId>3</ObjectId>
     </table>
     <table id="167" parent="4" name="USER">
-      <ObjectId>7</ObjectId>
+      <ObjectId>11</ObjectId>
     </table>
     <column id="168" parent="166" name="ID">
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(129)</SequenceIdentity>
     </column>
     <column id="169" parent="166" name="TITLE">
       <Position>2</Position>
@@ -255,7 +255,7 @@
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(353)</SequenceIdentity>
+      <SequenceIdentity>null(481)</SequenceIdentity>
     </column>
     <column id="181" parent="167" name="ACCOUNT_ID">
       <Position>2</Position>
@@ -281,15 +281,19 @@
       <Position>7</Position>
       <DataType>VARCHAR(256)|0s</DataType>
     </column>
-    <index id="187" parent="167" name="PRIMARY_KEY_27">
-      <ObjectId>8</ObjectId>
+    <column id="187" parent="167" name="AVATAR_URL">
+      <Position>8</Position>
+      <DataType>VARCHAR(1000)|0s</DataType>
+    </column>
+    <index id="188" parent="167" name="PRIMARY_KEY_2">
+      <ObjectId>12</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SourceTextLength>69</SourceTextLength>
+      <SourceTextLength>68</SourceTextLength>
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="188" parent="167" name="USER_PK">
+    <key id="189" parent="167" name="USER_PK">
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
