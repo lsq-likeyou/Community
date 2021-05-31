@@ -14,8 +14,14 @@ public interface QuestionMapper {
     void create(Question question);
 
     @Select("select * from question limit #{offset}, #{size}")
-    List<Question> MapperList(@Param(value = "offset") Integer offset,@Param(value = "size") Integer size);
+    List<Question> MapperList(@Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
 
     @Select("select count(1) from question")
     Integer count();//计算总页码公式
+
+    @Select("select * from question where creator = #{userId} limit #{offset}, #{size}")
+    List<Question> listByUserId(@Param("userId") Integer userId, @Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
+
+    @Select("select count(1) from question where creator = #{userId}")
+    Integer countByUserId(@Param("userId") Integer userId);
 }

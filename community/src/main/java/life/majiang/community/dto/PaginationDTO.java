@@ -16,18 +16,8 @@ public class PaginationDTO {
     private List<Integer> pages = new ArrayList<>();//展示的页码数列表
     private Integer totaPage;//最后一页页码
 
-    public void setPagination(Integer totaCount, Integer page, Integer size) {
-        if (totaCount % size == 0) {
-            totaPage = totaCount / size;
-        } else {
-            totaPage = totaCount / size + 1;
-        }
-        if (page < 1) {
-            page = 1;
-        }
-        if (page > totaPage) {
-            page = totaPage;
-        }
+    public void setPagination(Integer totaPage, Integer page) {
+        this.totaPage = totaPage;
         this.page = page;
 
         pages.add(page);
@@ -39,7 +29,6 @@ public class PaginationDTO {
                 pages.add(page + i);//尾部插入
             }
         }
-
         //是否展示上一页
         if (page == 1) {
             showPrevious = false;

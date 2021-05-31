@@ -1,7 +1,6 @@
 package life.majiang.community.controller;
 
 import life.majiang.community.mapper.QuestionMapper;
-import life.majiang.community.mapper.UserMapper;
 import life.majiang.community.model.Question;
 import life.majiang.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PublishController {
     @Autowired
     private QuestionMapper questionMapper;
-    @Autowired
-    private UserMapper userMapper;
 
     @GetMapping("/publish")
     public String publish() {
@@ -49,21 +45,8 @@ public class PublishController {
             model.addAttribute("error", "标签不能为空");
             return "publish";
         }
-
-        User user = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null && cookies.length != 0) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
-                    String token = cookie.getValue();
-                    user = userMapper.findByToken(token);
-                    if (user != null) {
-                        request.getSession().setAttribute("user", user);
-                    }
-                    break;
-                }
-            }
-        }
+//代码行在SessionInterceptor类中，写的一个拦截器，在此类中恢复需要注入UserMapper
+        User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             //将信息显示到页面交互
             model.addAttribute("error", "没有登录");
@@ -79,6 +62,5 @@ public class PublishController {
 
         questionMapper.create(question);
         return "redirect:/";
-
     }
 }
