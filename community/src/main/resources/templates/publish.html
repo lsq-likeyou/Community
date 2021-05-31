@@ -19,6 +19,7 @@
             <hr>
 
             <form action="/publish" method="post">
+                <input type="hidden" name="id" th:value="${id}">  <!--hidden:当表单再次提交时，将id属性传递回来，但是不显示-->
                 <div class="form-group">
                     <label for="title">问题标题</label>
                     <input type="text" class="form-control" th:value="${title}" id="title" name="title"

@@ -19,7 +19,7 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //访问任何地址时，都会读取cookies，从中拿到token，由token获取数据库中user对象放到session中，
+        //访问任何地址时，都会读取cookies，从中拿到token，由token获取数据库中user对象放到session中
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {

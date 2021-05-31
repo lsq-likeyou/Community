@@ -1,12 +1,14 @@
 package life.majiang.community.controller;
 
-import life.majiang.community.mapper.QuestionMapper;
+import life.majiang.community.dto.QuestionDTO;
 import life.majiang.community.model.Question;
 import life.majiang.community.model.User;
+import life.majiang.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,7 +17,19 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class PublishController {
     @Autowired
-    private QuestionMapper questionMapper;
+    private QuestionService questionService;
+
+    @GetMapping("/publish/{id}")   //点击编辑时，跳转此地址
+    public String edit(@PathVariable(name = "id") Integer id,
+                       Model model) {
+        QuestionDTO questionDTO = questionService.getById(id);//获取id
+        //回显页面
+        model.addAttribute("title", questionDTO.getTitle());
+        model.addAttribute("description", questionDTO.getDescription());
+        model.addAttribute("tag", questionDTO.getTag());
+        model.addAttribute("id", questionDTO.getId());//获取id作为数据更新标识
+        return "publish";
+    }
 
     @GetMapping("/publish")
     public String publish() {
@@ -27,8 +41,10 @@ public class PublishController {
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("tag") String tag,
+            @RequestParam(value = "id", required = false) Integer id,
             HttpServletRequest request,
             Model model) {
+        //回显页面
         model.addAttribute("title", title);
         model.addAttribute("description", description);
         model.addAttribute("tag", tag);
@@ -57,10 +73,10 @@ public class PublishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setCreator(user.getId());
-        question.setGmtCreate(System.currentTimeMillis());
-        question.setGmtModified(question.getGmtCreate());
 
-        questionMapper.create(question);
+        question.setId(id);//拿到Id，传入createQrUpdate()方法
+        questionService.createQrUpdate(question);
+        //questionMapper.create(question);
         return "redirect:/";
     }
 }
