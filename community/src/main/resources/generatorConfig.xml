@@ -1,0 +1,38 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE generatorConfiguration-->
+<!--        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"-->
+<!--        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">-->
+
+<!--<generatorConfiguration>         &lt;!&ndash;根节点&ndash;&gt;-->
+<!--    <context id="DB2Tables" targetRuntime="MyBatis3">    &lt;!&ndash;通用写法&ndash;&gt;-->
+
+<!--        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>-->
+<!--        <jdbcConnection driverClass="org.h2.Driver"-->
+<!--                        connectionURL="jdbc:h2:~/community"-->
+<!--                        userId="lu"-->
+<!--                        password="123">-->
+<!--        </jdbcConnection>    &lt;!&ndash;数据库注册&ndash;&gt;-->
+
+<!--        <javaTypeResolver>-->
+<!--            <property name="forceBigDecimals" value="false"/>-->
+<!--        </javaTypeResolver>-->
+
+<!--        <javaModelGenerator targetPackage="life.majiang.community.model" targetProject="src/main/java">  &lt;!&ndash;生成Java路径&ndash;&gt;-->
+<!--            <property name="enableSubPackages" value="true"/>&lt;!&ndash;ture 没有自动生成路径&ndash;&gt;-->
+<!--            <property name="trimStrings" value="true"/>&lt;!&ndash;数据库查询时去空格&ndash;&gt;-->
+<!--        </javaModelGenerator>-->
+
+<!--        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">-->
+<!--            <property name="enableSubPackages" value="true"/>-->
+<!--        </sqlMapGenerator>-->
+
+<!--        <javaClientGenerator type="XMLMAPPER" targetPackage="life.majiang.community.mapper"-->
+<!--                             targetProject="src/main/java">-->
+<!--            <property name="enableSubPackages" value="true"/>-->
+<!--        </javaClientGenerator>-->
+<!--&lt;!&ndash;配置数据库表&ndash;&gt;-->
+<!--        <table tableName="user" domainObjectName="User"></table>-->
+<!--        <table tableName="question" domainObjectName="Question"></table>-->
+
+<!--    </context>-->
+<!--</generatorConfiguration>-->

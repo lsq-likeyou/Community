@@ -33,3 +33,7 @@
 # git commit --amend --no-edit 其中amend:追加上一个相同的文件,--no-edit:不更改备注信息
 
 # 5、git push 上传
+
+##相关命令
+mvn flyway:migrate
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

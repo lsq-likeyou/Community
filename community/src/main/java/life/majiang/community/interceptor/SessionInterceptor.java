@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @Service
 public class SessionInterceptor implements HandlerInterceptor {
     @Autowired
-    private  UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -25,9 +25,14 @@ public class SessionInterceptor implements HandlerInterceptor {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
                     String token = cookie.getValue();
+//                    UserExample userExample = new UserExample();
+//                    userExample.createCriteria()
+//                            .andTokenEqualTo(token);
+//                    List<User> users = userMapper.selectByExample(userExample);
                     User user = userMapper.findByToken(token);
+//                    if (users.size() != 0)
                     if (user != null) {
-                        request.getSession().setAttribute("user", user);
+                        request.getSession().setAttribute("user", user);//user.get(0)
                     }
                     break;
                 }
