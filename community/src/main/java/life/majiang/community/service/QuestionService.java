@@ -4,6 +4,7 @@ import life.majiang.community.dto.PaginationDTO;
 import life.majiang.community.dto.QuestionDTO;
 import life.majiang.community.exception.CustomizeErrorCode;
 import life.majiang.community.exception.CustomizeException;
+import life.majiang.community.mapper.QuestionExtMapper;
 import life.majiang.community.mapper.QuestionMapper;
 import life.majiang.community.mapper.UserMapper;
 import life.majiang.community.model.Question;
@@ -19,6 +20,8 @@ import java.util.List;
 public class QuestionService {              //联合mapper中的Mapper
     @Autowired
     private QuestionMapper questionMapper;
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
     @Autowired
     private UserMapper userMapper;
 
@@ -61,7 +64,7 @@ public class QuestionService {              //联合mapper中的Mapper
         return paginationDTO;
     }//创建service的目的：可以同时使用mapper里的Mapper
 
-    public PaginationDTO list(Integer userId, Integer page, Integer size) {
+    public PaginationDTO list(Long userId, Integer page, Integer size) {
         PaginationDTO paginationDTO = new PaginationDTO();
 
         Integer totaPage;//最后一页页码
@@ -105,7 +108,7 @@ public class QuestionService {              //联合mapper中的Mapper
     }
 
     //获取question详情
-    public QuestionDTO getById(Integer id) {
+    public QuestionDTO getById(Long id) {
 //      Question question = questionMapper.selectByPrimaryKey(id);
         Question question = questionMapper.getById(id);
         if (question == null){
@@ -126,6 +129,9 @@ public class QuestionService {              //联合mapper中的Mapper
         if (question.getId() == null) {
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
+            question.setViewCount(0);
+            question.setLikeCount(0);
+            question.setCommentCount(0);
 //            questionMapper.insert(question);
             questionMapper.create(question);
         } else {
@@ -144,5 +150,20 @@ public class QuestionService {              //联合mapper中的Mapper
 //                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
 //            }
         }
+    }
+
+    public void incView(Long id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        questionExtMapper.incView(question);
+//        Question question = questionMapper.selectByPrimaryKey(id);
+//        Question updateQuestion = new Question();
+//        updateQuestion.setViewCount(question.getViewCount() + 1 );
+//        QuestionExample questionExample = new QuestionExample();
+//        //更新
+//        questionExample.createCriteria()
+//                       .andIdEqualTo(id);
+//        questionMapper.updateByExampleSelective(updateQuestion,questionExample);
     }
 }

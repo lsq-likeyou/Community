@@ -20,7 +20,7 @@ public class PublishController {
     private QuestionService questionService;
 
     @GetMapping("/publish/{id}")   //点击编辑时，跳转此地址
-    public String edit(@PathVariable(name = "id") Integer id,
+    public String edit(@PathVariable(name = "id") Long id,
                        Model model) {
         QuestionDTO questionDTO = questionService.getById(id);//获取id
         //回显页面
@@ -41,7 +41,7 @@ public class PublishController {
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("tag") String tag,
-            @RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "id", required = false) Long id,
             HttpServletRequest request,
             Model model) {
         //回显页面
