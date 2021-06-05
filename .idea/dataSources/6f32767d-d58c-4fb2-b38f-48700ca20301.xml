@@ -176,38 +176,38 @@
     <collation id="161" parent="2" name="UKRAINIAN_UKRAINE"/>
     <collation id="162" parent="2" name="VIETNAMESE"/>
     <collation id="163" parent="2" name="VIETNAMESE_VIETNAM"/>
-    <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_09AB417A_8D32_4E3B_A352_A8A9D2897A7E">
+    <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_3BF8370B_FA26_4A4B_AF39_DCD3DFFAF350">
+      <ObjectId>5</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <SequenceIdentity>null(1)</SequenceIdentity>
+      <AutoCreated>1</AutoCreated>
+    </sequence>
+    <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_908B0CC7_3CD2_41F0_B476_F5ECE36C728B">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(33)</SequenceIdentity>
+      <SequenceIdentity>null(1)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
-    <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_11C5B4AD_6853_4E22_856B_AF9CDB0E1F2C">
-      <ObjectId>8</ObjectId>
-      <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(33)</SequenceIdentity>
-      <AutoCreated>1</AutoCreated>
-    </sequence>
-    <sequence id="166" parent="4" name="SYSTEM_SEQUENCE_A0F82CE0_FC3A_4828_9CDD_85F9EBE72D9C">
+    <sequence id="166" parent="4" name="SYSTEM_SEQUENCE_B01FF1F5_4667_492E_878E_CB9AA3A4BE68">
       <ObjectId>12</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(33)</SequenceIdentity>
+      <SequenceIdentity>null(1)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <table id="167" parent="4" name="COMMENT">
       <ObjectId>11</ObjectId>
     </table>
     <table id="168" parent="4" name="QUESTION">
-      <ObjectId>7</ObjectId>
+      <ObjectId>3</ObjectId>
     </table>
     <table id="169" parent="4" name="USER">
-      <ObjectId>3</ObjectId>
+      <ObjectId>7</ObjectId>
     </table>
     <column id="170" parent="167" name="ID">
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(33)</SequenceIdentity>
+      <SequenceIdentity>null(1)</SequenceIdentity>
     </column>
     <column id="171" parent="167" name="PARENT_ID">
       <Position>2</Position>
@@ -257,7 +257,7 @@
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(33)</SequenceIdentity>
+      <SequenceIdentity>null(1)</SequenceIdentity>
     </column>
     <column id="181" parent="168" name="TITLE">
       <Position>2</Position>
@@ -277,14 +277,14 @@
     </column>
     <column id="185" parent="168" name="CREATOR">
       <Position>6</Position>
-      <DataType>BIGINT|0s</DataType>
+      <DataType>INT|0s</DataType>
     </column>
-    <column id="186" parent="168" name="VIEW_COUNT">
+    <column id="186" parent="168" name="COMMENT_COUNT">
       <Position>7</Position>
       <DataType>INT|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="187" parent="168" name="COMMENT_COUNT">
+    <column id="187" parent="168" name="VIEW_COUNT">
       <Position>8</Position>
       <DataType>INT|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
@@ -299,7 +299,7 @@
       <DataType>VARCHAR(256)|0s</DataType>
     </column>
     <index id="190" parent="168" name="PRIMARY_KEY_E">
-      <ObjectId>9</ObjectId>
+      <ObjectId>6</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>72</SourceTextLength>
       <ColNames>ID</ColNames>
@@ -314,15 +314,15 @@
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(33)</SequenceIdentity>
+      <SequenceIdentity>null(1)</SequenceIdentity>
     </column>
-    <column id="193" parent="169" name="NAME">
+    <column id="193" parent="169" name="ACCOUNT_ID">
       <Position>2</Position>
-      <DataType>VARCHAR(50)|0s</DataType>
-    </column>
-    <column id="194" parent="169" name="ACCOUNT_ID">
-      <Position>3</Position>
       <DataType>VARCHAR(100)|0s</DataType>
+    </column>
+    <column id="194" parent="169" name="NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
     </column>
     <column id="195" parent="169" name="TOKEN">
       <Position>4</Position>
@@ -340,10 +340,10 @@
       <Position>7</Position>
       <DataType>VARCHAR|0s</DataType>
     </column>
-    <index id="199" parent="169" name="PRIMARY_KEY_2">
-      <ObjectId>5</ObjectId>
+    <index id="199" parent="169" name="PRIMARY_KEY_27">
+      <ObjectId>8</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SourceTextLength>68</SourceTextLength>
+      <SourceTextLength>69</SourceTextLength>
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
