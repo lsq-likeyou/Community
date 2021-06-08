@@ -1,4 +1,3 @@
-
 function comment2target(targetId, type, content) {
     if (!content) {
         alert("不能回复空内容!!!")
@@ -110,4 +109,22 @@ function collapseComments(e) {
             });
         }
     }
+}
+
+//标签写入
+function selectTag(e) {     //将value直接写入标签栏
+    var value = e.getAttribute("data-tag");
+    var previous = $("#tag").val();
+
+    if (previous.indexOf(value) == -1) {        //说明标签存在，不再添加
+        if (previous) {
+            $("#tag").val(previous + ',' + value);
+        } else {
+            $("#tag").val(value);
+        }
+    }
+}
+//展示标签导航
+function showSelectTag(){          //默认展示，点击标签编辑框展示
+    $("#select-tag").show();
 }

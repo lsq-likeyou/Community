@@ -27,7 +27,7 @@ public class GithubProvider {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "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";
+        return "ghp_9IjrucATGMAvRFLvJlkuZxSTBeAFBU26D01";
     }
 
     public GithubUser getUser(String accessToken) {
