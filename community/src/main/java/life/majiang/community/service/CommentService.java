@@ -4,10 +4,7 @@ import life.majiang.community.dto.CommentDTO;
 import life.majiang.community.enums.CommentTypeEnum;
 import life.majiang.community.exception.CustomizeErrorCode;
 import life.majiang.community.exception.CustomizeException;
-import life.majiang.community.mapper.CommentMapper;
-import life.majiang.community.mapper.QuestionExtMapper;
-import life.majiang.community.mapper.QuestionMapper;
-import life.majiang.community.mapper.UserMapper;
+import life.majiang.community.mapper.*;
 import life.majiang.community.model.Comment;
 import life.majiang.community.model.Question;
 import life.majiang.community.model.User;
@@ -29,6 +26,8 @@ public class CommentService {
     private QuestionExtMapper questionExtMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private CommentExtMapper commentExtMapper;
 
     @Transactional                            //事务:当一条执行失败，整个方法失败。全成功则成功
     public void insert(Comment comment) {
@@ -38,14 +37,21 @@ public class CommentService {
         if (comment.getType() == null || !CommentTypeEnum.isExist(comment.getType())) {
             throw new CustomizeException(CustomizeErrorCode.TYPE_PARAM_WRONG);
         }
+
         if (comment.getType() == CommentTypeEnum.COMMENT.getType()) {
             //回复评论
 //            Comment dbComment = commentMapper.selectByPrimaryKey(comment.getParentId());
-            Comment dbComment = commentMapper.ByParentId(comment.getParentId());
+            Comment dbComment = commentMapper.ThanParentIdAndId(comment.getParentId());
+
             if (dbComment == null) {
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
             commentMapper.insert(comment);//否则成功
+            //增加二级评论数
+            Comment parentComment = new Comment();
+            parentComment.setId(comment.getParentId());
+            parentComment.setCommentCount(1);
+            commentExtMapper.inCommentCount(parentComment);
         } else {
             //回复问题
 //            Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
@@ -59,14 +65,14 @@ public class CommentService {
         }
     }
 
-    public List<CommentDTO> listByQuestionId(Long id) {
+    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type) {
 //        CommentExample commentExample = new CommentExample();
 //        commentExample.createCriteria()
 //                      .andParentIdEqualTo(id)//当type等于不同情况的时候，才是问题下面的评论（二级？）
 //                      .andTypeEqualTo(CommentTypeEnum.QUESTION.getType());//拿到所有comment（commentMapper？）
 //        commentExample.setOrderByClause("gmt_create desc");//按照创建时间的倒叙排序
 //        List<Comment> comments = commentMapper.selectByExample(commentExample);//去数据库查询，，，，拿到所有评论
-        List<Comment> comments = commentMapper.listCommentator(id,1);//拿到所有一级评论人的id
+        List<Comment> comments = commentMapper.listCommentator(id, type.getType());//拿到所有评论人的id
         Collections.reverse(comments);//倒叙
         if (comments.size() == 0) {
             return new ArrayList<>();

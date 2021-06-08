@@ -28,4 +28,6 @@ public interface QuestionMapper {
     @Update("update question set title = #{title},description = #{description},gmt_modified = #{gmtModified},tag = #{tag} where id = #{id}")
     void update(Question question);
 
+    @Select("select * from question where id != #{id} and tag regexp #{tag}")
+    List<Question> selectRelated(Question question);
 }

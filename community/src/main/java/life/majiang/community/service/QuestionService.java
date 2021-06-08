@@ -9,12 +9,16 @@ import life.majiang.community.mapper.QuestionMapper;
 import life.majiang.community.mapper.UserMapper;
 import life.majiang.community.model.Question;
 import life.majiang.community.model.User;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {              //联合mapper中的Mapper
@@ -49,6 +53,7 @@ public class QuestionService {              //联合mapper中的Mapper
 
 //      List<Question> questions = questionMapper.selectByExampleWithRowbounds(new QuestionExample(),new RowBounds(offset,size));
         List<Question> questions = questionMapper.MapperList(offset, size);
+        Collections.reverse(questions);//倒叙
         List<QuestionDTO> questionDTOList = new ArrayList<QuestionDTO>();
 
         for (Question question : questions) {
@@ -111,7 +116,7 @@ public class QuestionService {              //联合mapper中的Mapper
     public QuestionDTO getById(Long id) {
 //      Question question = questionMapper.selectByPrimaryKey(id);
         Question question = questionMapper.getById(id);
-        if (question == null){
+        if (question == null) {
             //为空有错,抛出异常,跳转error页面，显示信息。此时异常为通用问题,去CustomizeExceptionHandler抓取
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }//CustomizeErrorCode.QUESTION_NOT_FOUND去exception包里自己看
@@ -165,5 +170,27 @@ public class QuestionService {              //联合mapper中的Mapper
 //        questionExample.createCriteria()
 //                       .andIdEqualTo(id);
 //        questionMapper.updateByExampleSelective(updateQuestion,questionExample);
+    }
+
+    public List<QuestionDTO> selectRelated(QuestionDTO queryDTo) {
+        if (StringUtils.isBlank(queryDTo.getTag())) {         //判断是否为空
+            return new ArrayList<>();
+        }
+        String[] tags = StringUtils.split(queryDTo.getTag(), ",");
+        String regexpTag = Arrays.stream(tags).collect(Collectors.joining("|"));
+
+        Question question = new Question();
+        question.setId(queryDTo.getId());
+        question.setTag(regexpTag);
+
+        List<Question> questions = questionMapper.selectRelated(question);
+        //questions转QuestionDTO
+        List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
+            QuestionDTO questionDTO = new QuestionDTO();
+            BeanUtils.copyProperties(q, questionDTO);//赋值
+            return questionDTO;
+        }).collect(Collectors.toList());
+
+        return questionDTOS;
     }
 }
