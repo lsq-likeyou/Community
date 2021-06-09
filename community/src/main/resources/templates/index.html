@@ -26,7 +26,7 @@
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 欢迎进入花花世界</h2>
+            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 欢迎进入花花世界</h3>
             <hr>
 
             <div class="media" th:each="question : ${pagination.data}">
@@ -40,7 +40,8 @@
                     <h4 class="media-heading">
                         <a th:href=" @{'/question/'+${question.id}}" th:text="${question.title}"></a>
                     </h4>
-                    <span th:text="${question.description}"></span>  <!--内容显示-->
+<!--                    <span th:text="${question.description}"></span>  &lt;!&ndash;内容显示&ndash;&gt;-->
+                    <span>点击标题可浏览详情</span>
                     <br>
                     <span class="text-desc"><span th:text="${question.commentCount}"></span> 个回复 ~
                         <span th:text="${question.viewCount}"></span> 次浏览 |
