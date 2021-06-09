@@ -20,4 +20,6 @@ public interface CommentMapper {
     @Select("select * from comment where parent_id = #{id} and type = #{type}")
     List<Comment> listCommentator(@Param("id") Long id,@Param("type") Integer type);
 
+    @Select("select * from comment where commentator = #{userId}")
+    List<Comment> findAll(@Param("userId") Long userId);
 }

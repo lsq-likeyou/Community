@@ -43,23 +43,25 @@
                     <div class="publish-tag-tab" id="select-tag">
                         <!--  导航-->
                         <ul class="nav nav-tabs" role="tablist">
-                            <!--   "tag:${tags}"   tag来源于tags   -->
-                            <li role="presentation" th:each="selectCetegory:${tags}">
+                            <!--   "tag:${tags}"   tag来源于tags .selectCategoryStat加for循环  -->
+                            <li role="presentation" th:each="selectCetegory,selectCategoryStat:${tags}"
+                                th:class="${selectCategoryStat.first ? 'active' : ''}">
                                 <a th:href="${'#'+selectCetegory.categoryName}" aria-controls="home" role="tab"
                                    data-toggle="tab" th:text="${selectCetegory.categoryName}"></a>
                             </li>
                         </ul>
                         <!-- 菜单 -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" th:id="${selectCetegory.categoryName}"
-                                 th:each="selectCetegory:${tags}">
+                            <div role="tabpanel" th:id="${selectCetegory.categoryName}"
+                                 th:each="selectCetegory,selectCategoryStat:${tags}"
+                                 th:class="${selectCategoryStat.first ? 'active tab-pane' : 'tab-pane'}">
                                 <span>
-                                    <span class="label label-info" style="margin-right: 10px"
+                                    <span class="label label-info publish-info"
                                           th:each="selectTag:${selectCetegory.tags}">
-                                    <span class="glyphicon glyphicon-tags" onclick="selectTag(this)"
-                                          th:data-tag="${selectTag}"
-                                          th:text="${'  '+selectTag}">
-                                    </span>
+                                        <span class="glyphicon glyphicon-tags" onclick="selectTag(this)"
+                                              th:data-tag="${selectTag}"
+                                              th:text="${'  '+selectTag}">
+                                        </span>
                                     </span>
                                 </span>
 

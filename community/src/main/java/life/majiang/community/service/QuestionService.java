@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,7 +52,7 @@ public class QuestionService {              //联合mapper中的Mapper
 
 //      List<Question> questions = questionMapper.selectByExampleWithRowbounds(new QuestionExample(),new RowBounds(offset,size));
         List<Question> questions = questionMapper.MapperList(offset, size);
-        Collections.reverse(questions);//倒叙
+//        Collections.reverse(questions);                             //倒叙
         List<QuestionDTO> questionDTOList = new ArrayList<QuestionDTO>();
 
         for (Question question : questions) {
@@ -64,7 +63,7 @@ public class QuestionService {              //联合mapper中的Mapper
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
 
         return paginationDTO;
     }//创建service的目的：可以同时使用mapper里的Mapper
@@ -107,7 +106,7 @@ public class QuestionService {              //联合mapper中的Mapper
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
 
         return paginationDTO;
     }

@@ -34,7 +34,8 @@ public class GithubProvider {
         GithubUser u = new GithubUser();
         u.setId(84836932L);//account_idr
         u.setName("花花");
-        u.setAvatarUrl("https://avatars.githubusercontent.com/u/84836932?v=4");
+//        u.setAvatarUrl("https://avatars.githubusercontent.com/u/84836932?v=4");
+        u.setAvatarUrl("https://q1.qlogo.cn/g?b=qq&s=100&nk=2381863703");
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://api.github.com/user")

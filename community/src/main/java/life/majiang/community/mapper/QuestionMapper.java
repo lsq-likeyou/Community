@@ -10,13 +10,13 @@ public interface QuestionMapper {
     @Insert("insert into question (id,title,description,gmt_create,gmt_modified,creator,tag) values (#{id},#{title},#{description},#{gmtCreate},#{gmtModified},#{creator},#{tag})")
     void create(Question question);
 
-    @Select("select * from question limit #{offset}, #{size}")
+    @Select("select * from question order by gmt_create DESC limit #{offset}, #{size}")
     List<Question> MapperList(@Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
 
     @Select("select count(1) from question")
     Integer count();//计算总页码公式
 
-    @Select("select * from question where creator = #{userId} limit #{offset}, #{size}")
+    @Select("select * from question where creator = #{userId} order by gmt_create DESC limit #{offset}, #{size}")
     List<Question> listByUserId(@Param("userId") Long userId, @Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
 
     @Select("select count(1) from question where creator = #{userId}")
