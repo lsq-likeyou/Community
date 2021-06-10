@@ -81,8 +81,9 @@ function collapseComments(e) {
                         "class": "media-body"
                     }).append($("<h5/>", {
                         "class": "media-heading",
-                        //"style": "line-height: 45px",
+                        "style": "line-height: 45px",
                         "html": comment.user.name
+
                     })).append($("<div/>", {
                         "html": comment.content
                     })).append($("<div/>", {
@@ -124,7 +125,8 @@ function selectTag(e) {     //将value直接写入标签栏
         }
     }
 }
+
 //展示标签导航
-function showSelectTag(){          //默认展示，点击标签编辑框展示
+function showSelectTag() {          //默认展示，点击标签编辑框展示
     $("#select-tag").show();
 }

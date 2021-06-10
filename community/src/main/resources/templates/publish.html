@@ -15,6 +15,7 @@
 <body>
 
 <div th:insert="~{navigation :: lsq}"></div>
+
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -24,7 +25,7 @@
             <form action="/publish" method="post">
                 <input type="hidden" name="id" th:value="${id}">  <!--hidden:当表单再次提交时，将id属性传递回来，但是不显示-->
                 <div class="form-group">
-                    <label for="title">问题标题</label>
+                    <label for="title">问题标题(简单概要...)</label>
                     <input type="text" class="form-control" th:value="${title}" id="title" name="title"
                            autocomplete="off" placeholder="问题......">
                 </div>
@@ -44,7 +45,10 @@
                             path: "/lib/",
                             delay: 0,
                             watch: false,
-                            placeholder: "请输入问题描述......."
+                            placeholder: "请输入问题描述.......",
+                            imageUpload: true,
+                            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                            imageUploadURL: "/file/upload",
                         });
                     });
                 </script>
@@ -112,5 +116,7 @@
         </div>
     </div>
 </div>
+<!--底部-->
+<div th:insert="~{footer :: foot}"></div>
 </body>
 </html>

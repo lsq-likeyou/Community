@@ -55,6 +55,7 @@ public class CommentService {
             if (question == null) {
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
+//            comment.setCommentCount(0);
             commentMapper.insert(comment);//否则成功
             //增加二级评论数
             Comment parentComment = new Comment();
@@ -70,6 +71,7 @@ public class CommentService {
             if (question == null) {
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
+            comment.setCommentCount(0);
             commentMapper.insert(comment);//否则成功
             question.setCommentCount(1);
             questionExtMapper.inCommentCount(question);
@@ -81,6 +83,9 @@ public class CommentService {
     }
 
     private void createNotify(Comment comment, Long receiver, String notifierName, String outerTitle, NotificationTypeEnum notificationType, Long outerId) {
+        if (receiver == comment.getCommentator()){         //自己评论自己不给通知
+            return;
+        }
         Notification notification = new Notification();
         notification.setGmtCreate(System.currentTimeMillis());
         notification.setType(notificationType.getType());//阅读类型

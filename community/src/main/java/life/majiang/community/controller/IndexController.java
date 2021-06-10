@@ -18,11 +18,15 @@ public class IndexController {
     public String index( //HttpServletRequest request,
                          Model model,
                          @RequestParam(name = "page", defaultValue = "1") Integer page,
-                         @RequestParam(name = "size", defaultValue = "6") Integer size) {//page,size获取页码,传入list()
+                         @RequestParam(name = "size", defaultValue = "6") Integer size,
+                         @RequestParam(name = "search", required = false) String search
+                         ) {//page,size获取页码,传入list()
 //代码行在SessionInterceptor类中，写的一个拦截器，在此类中恢复需要注入UserMapper
         //查询发布的数据 列表
-        PaginationDTO pagination = questionService.ServiceList(page, size);
+        PaginationDTO pagination = questionService.ServiceList(search,page, size);
         model.addAttribute("pagination", pagination);
+        model.addAttribute("search", search);
+
         return "index";
     }
 }

@@ -28,33 +28,46 @@ public class QuestionService {              //联合mapper中的Mapper
     @Autowired
     private UserMapper userMapper;
 
-    public PaginationDTO ServiceList(Integer page, Integer size) {
+    private static Integer totaCount;
+    private static List<Question> questions;
+
+    public PaginationDTO ServiceList(String search, Integer page, Integer size) {
+
+        //搜所功能实现
+        if (StringUtils.isNoneBlank(search)) {         //判断不是空
+            String[] tags = StringUtils.split(search, " ");
+            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+        }
+
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totaPage;//最后一页页码
+        Integer offset = size * (page - 1);
 
+        if (search == null) {
+            totaCount = questionMapper.count1();
+            questions = questionMapper.MapperList1(offset, size);
+        } else {
+            totaCount = questionMapper.count2(search);
+            questions = questionMapper.MapperList2(search, offset, size);
+        }
 //        Integer totaCount = (int)questionMapper.countByExample(new QuestionExample());
-
-        Integer totaCount = questionMapper.count();//拿到总页码
+//        Integer totaCount = questionMapper.count1();
         if (totaCount % size == 0) {
             totaPage = totaCount / size;
         } else {
             totaPage = totaCount / size + 1;
         }
-
         if (page < 1) {
             page = 1;
         } else if (page > totaPage) {
             page = totaPage;
         }
         paginationDTO.setPagination(totaPage, page);
-
-        Integer offset = size * (page - 1);
-
+//        Integer offset = size * (page - 1);
 //      List<Question> questions = questionMapper.selectByExampleWithRowbounds(new QuestionExample(),new RowBounds(offset,size));
-        List<Question> questions = questionMapper.MapperList(offset, size);
-//        Collections.reverse(questions);                             //倒叙
-        List<QuestionDTO> questionDTOList = new ArrayList<QuestionDTO>();
+//        List<Question> questions = questionMapper.MapperList1(offset, size);
 
+        List<QuestionDTO> questionDTOList = new ArrayList<QuestionDTO>();
         for (Question question : questions) {
             User user = userMapper.findById(question.getCreator());
 //          User user = userMapper.selectByPrimaryKey(question.getCreator());

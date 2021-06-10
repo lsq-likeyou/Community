@@ -179,25 +179,25 @@
     <sequence id="164" parent="4" name="SYSTEM_SEQUENCE_0D1EF7C8_80BF_4F4E_8E0A_6CD1908EBA50">
       <ObjectId>8</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(65)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_2CF9ECCE_749E_441D_AD92_BB65C42B995D">
       <ObjectId>12</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(33)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <sequence id="166" parent="4" name="SYSTEM_SEQUENCE_67FE53F6_1396_427D_BA0D_EC4967174F65">
       <ObjectId>16</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(33)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <sequence id="167" parent="4" name="SYSTEM_SEQUENCE_82F9C095_0700_4953_946B_38408082A6EA">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(33)</SequenceIdentity>
       <AutoCreated>1</AutoCreated>
     </sequence>
     <table id="168" parent="4" name="COMMENT">
@@ -216,7 +216,7 @@
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(33)</SequenceIdentity>
     </column>
     <column id="173" parent="168" name="PARENT_ID">
       <Position>2</Position>
@@ -271,7 +271,7 @@
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(33)</SequenceIdentity>
     </column>
     <column id="184" parent="169" name="NOTIFIER">
       <Position>2</Position>
@@ -328,7 +328,7 @@
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(65)</SequenceIdentity>
     </column>
     <column id="195" parent="170" name="TITLE">
       <Position>2</Position>
@@ -388,7 +388,7 @@
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>null(1)</SequenceIdentity>
+      <SequenceIdentity>null(33)</SequenceIdentity>
     </column>
     <column id="207" parent="171" name="ACCOUNT_ID">
       <Position>2</Position>

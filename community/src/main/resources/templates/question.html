@@ -39,7 +39,7 @@
                     <textarea style="display:none;" th:text="${question.description}"></textarea>
                 </div>
                 <script type="text/javascript">
-                    $(function() {
+                    $(function () {
                         editormd.markdownToHTML("question-view", {});
                     });
                 </script>
@@ -139,12 +139,12 @@
                         <div class="media-left">
                             <a href="#">
                                 <img class="media-object img-rounded"
-                                     th:src="${question.user.avatarUrl}">
+                                     th:src="${session.user != null ? session.user.avatarUrl : '/images/default-avatar.png'}">
                             </a>
                         </div>
                         <div class="media-body name">
                             <h5 class="media-heading" style="line-height: 50px">
-                                <span th:text="${question.user.name}"></span>
+                                <span th:text="${session.user != null ? session.user.name : '匿名用户'}"></span>
                             </h5>
                         </div>
                     </div>
@@ -193,5 +193,7 @@
         </div>
     </div>
 </div>
+<!--底部-->
+<div th:insert="~{footer :: foot}"></div>
 </body>
 </html>

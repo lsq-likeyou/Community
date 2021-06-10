@@ -10,7 +10,7 @@ public interface QuestionExtMapper {
     void incView(Question question);//阅读数
 
     @Update("update question set comment_count = comment_count + #{commentCount,jdbcType=INTEGER} where id = #{id}")
-    int inCommentCount(Question question);//评论数
+    Integer inCommentCount(Question question);//评论数
 
 }
 
